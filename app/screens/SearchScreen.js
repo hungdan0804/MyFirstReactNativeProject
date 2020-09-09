@@ -153,17 +153,17 @@ const styles = StyleSheet.create({
     top: StatusBar.currentHeight,
   },
   headerContainer: {
-    flex: 2,
+    height: height / 8,
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "row",
   },
   historyContainer: {
-    flex: 3,
+    height: (height * 3) / 16,
     alignItems: "center",
   },
   categoryContainer: {
-    flex: 9,
+    height: (height * 9) / 16,
     alignItems: "center",
   },
   pickerContainer: {

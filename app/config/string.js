@@ -15,4 +15,7 @@ export default {
   title_history: "History",
   title_category: "Category",
   /******Favorite screen*******/
+  /******Item screen*******/
+  ic_name_arrow_back: "arrow_back",
+  title_preparation: "Preparation",
 };

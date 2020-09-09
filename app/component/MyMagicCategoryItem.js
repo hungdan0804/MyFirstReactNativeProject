@@ -32,7 +32,7 @@ function MyMagicCategoryItem({ item, index }) {
 
 const styles = StyleSheet.create({
   cardView: {
-    width: width * 0.25, //30% width screen
+    width: width * 0.25, //25% width screen
     height: width * 0.25,
     backgroundColor: colors.cardView_color,
     margin: 10,
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   item_category_thumnail: {
-    width: width * 0.25 * 0.7, //30% width screen * 70% parent width screen
+    width: width * 0.25 * 0.7, //25% width screen * 70% parent width screen
     height: width * 0.25 * 0.7, // circle
     borderRadius: width * 0.25 * 0.7, //circle
   },

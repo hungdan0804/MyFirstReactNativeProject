@@ -10,18 +10,14 @@ function MyMagicHistoryItem({ item, index }) {
   useEffect(() => {
     Animated.timing(animateItem, {
       toValue: 1,
-      duration: 400,
+      duration: 300,
       delay: index * 300,
       useNativeDriver: true,
     }).start();
-  });
-  const translateX = animateItem.interpolate({
+  }, []);
+  const opacity = animateItem.interpolate({
     inputRange,
-    outputRange: [width, 0],
-  });
-  const scale = animateItem.interpolate({
-    inputRange,
-    outputRange: [0.3, 1],
+    outputRange: [0, 1],
   });
 
   return (
@@ -29,7 +25,7 @@ function MyMagicHistoryItem({ item, index }) {
       index={index}
       style={{
         ...styles.cardView,
-        transform: [{ translateX }, { scale }],
+        opacity,
       }}
     >
       <Image style={styles.item_history_thumnail} source={item.thumbnail} />

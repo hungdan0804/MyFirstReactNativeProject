@@ -143,9 +143,8 @@ function HomeScreen(props) {
       >
         <SafeAreaView style={styles.container}>
           <View style={styles.header}>
-            <View style={styles.circle}>
-              <Text style={styles.logo}>{string.logo}</Text>
-            </View>
+            <View style={styles.circle}></View>
+            <Text style={styles.logo}>{string.logo}</Text>
           </View>
           <View style={styles.mainContent}>
             <Text style={styles.title_rec}>{string.title_rec}</Text>
@@ -195,21 +194,24 @@ const styles = StyleSheet.create({
   },
   header: {
     flex: 3, //header 3/16
+    justifyContent: "center",
+    flexDirection: "row",
   },
   circle: {
-    width: (width * 2) / 3, //66.6% width screen
-    height: height / 8, //12.5% height screen
-    borderBottomLeftRadius: 180,
-    borderBottomRightRadius: 180,
+    position: "absolute",
+    width: width * 0.4, //40% width screen
+    height: width * 0.24, //23% width screen
+    borderBottomLeftRadius: 90,
+    borderBottomRightRadius: 90,
+    transform: [{ scaleX: 2 }],
     backgroundColor: "red",
-    alignSelf: "center",
-    alignItems: "center",
-    justifyContent: "center",
   },
   logo: {
+    height: width * 0.1,
     color: "white",
     fontSize: 30,
     fontFamily: "Times New Roman",
+    marginTop: width * 0.07,
   },
   mainContent: {
     // main content 11/16
