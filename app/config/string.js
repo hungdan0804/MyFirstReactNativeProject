@@ -16,6 +16,8 @@ export default {
   title_category: "Category",
   /******Favorite screen*******/
   /******Item screen*******/
-  ic_name_arrow_back: "arrow_back",
+  ic_name_chevron_left: "chevron-left",
+  ic_name_chevron_right: "chevron-right",
   title_preparation: "Preparation",
+  title_method: "Method",
 };
