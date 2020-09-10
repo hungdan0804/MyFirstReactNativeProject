@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import {
   View,
   Text,
@@ -83,10 +83,13 @@ const DATA_CATEGORY = [
   },
 ];
 
-function SearchScreen(props) {
+function SearchScreen({ navigation }) {
   const [selectedItem, setSelectedItem] = useState(string.comboBox_msg_1);
   const [data, setData] = useState(DATA);
   const [category, setCategory] = useState(DATA_CATEGORY);
+  const handleItemClick = useCallback((item, index) => {
+    navigation.navigate("Category", { item: item, index: index });
+  }, []);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -137,7 +140,13 @@ function SearchScreen(props) {
           data={category}
           keyExtractor={(item) => item.id}
           renderItem={({ item, index }) => {
-            return <MyMagicCategoryItem item={item} index={index} />; //animation each item
+            return (
+              <MyMagicCategoryItem
+                item={item}
+                index={index}
+                onItemClick={handleItemClick}
+              />
+            ); //animation each item
           }}
           numColumns={3}
         />
@@ -149,7 +158,7 @@ function SearchScreen(props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.white,
+
     top: StatusBar.currentHeight,
   },
   headerContainer: {
@@ -174,6 +183,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     justifyContent: "center",
     padding: 5,
+    backgroundColor: colors.white,
   },
   searchBoxContainer: {
     flexDirection: "row-reverse",
@@ -185,6 +195,7 @@ const styles = StyleSheet.create({
     margin: 10,
     padding: 10,
     alignItems: "center",
+    backgroundColor: colors.white,
   },
   searchBox: {
     width: width * 0.4, // 40% width screen

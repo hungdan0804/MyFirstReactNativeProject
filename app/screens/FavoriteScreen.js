@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import {
   View,
   Text,
@@ -48,6 +48,10 @@ const DATA = [
 function FavoriteScreen({ navigation }) {
   const [data, setData] = useState(DATA);
 
+  const handleOnItemClick = useCallback((item, index) => {
+    navigation.navigate("Item", { item: item, index: index });
+  }, []);
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.headerContainer}>
@@ -64,7 +68,7 @@ function FavoriteScreen({ navigation }) {
               <MyMagicFavoriteItem
                 item={item}
                 index={index}
-                navigation={navigation}
+                onItemClick={handleOnItemClick}
               />
             ); //animation each item
           }}
@@ -80,7 +84,6 @@ function FavoriteScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.white,
     top: StatusBar.currentHeight,
   },
   headerContainer: {

@@ -20,4 +20,6 @@ export default {
   ic_name_chevron_right: "chevron-right",
   title_preparation: "Preparation",
   title_method: "Method",
+  /******Category screen*******/
+  btn_see_recipe: "See Recipe",
 };

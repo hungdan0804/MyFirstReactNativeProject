@@ -190,7 +190,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     top: StatusBar.currentHeight,
-    backgroundColor: colors.white,
   },
   header: {
     flex: 3, //header 3/16

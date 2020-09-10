@@ -15,7 +15,8 @@ import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import HomeScreen from "./app/screens/HomeScreen";
 import SearchScreen from "./app/screens/SearchScreen";
 import FavoriteScreen from "./app/screens/FavoriteScreen";
-import ItemScreen from "./app/screens//ItemScreen";
+import ItemScreen from "./app/screens/ItemScreen";
+import CategoryScreen from "./app/screens/CategoryScreen";
 import colors from "./app/config/color";
 import string from "./app/config/string";
 
@@ -70,6 +71,29 @@ function MyStack() {
           ),
         }}
       />
+      <Stack.Screen
+        name="Category"
+        component={CategoryScreen}
+        options={({ route }) => ({
+          title: route.params.item.title,
+          headerShown: true,
+          headerTitleStyle: {
+            flex: 1,
+            textAlign: "center",
+          },
+
+          headerStyle: {
+            backgroundColor: colors.primary,
+            elevation: 0.1,
+            shadowOpacity: 0.1,
+            borderBottomWidth: 0,
+          },
+          headerTintColor: colors.white,
+          headerTitleContainerStyle: {
+            left: 0,
+          },
+        })}
+      />
     </Stack.Navigator>
   );
 }
@@ -81,7 +105,7 @@ function MyTab() {
       shifting={true}
       backBehavior={"none"}
       barStyle={{
-        height: height * 0.09,
+        height: height * 0.08,
         backgroundColor: colors.primary,
         marginStart: "10%", //navigation width 80% width screen
         marginEnd: "10%", //navigation width 80% width screen

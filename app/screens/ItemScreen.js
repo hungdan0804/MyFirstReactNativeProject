@@ -261,17 +261,17 @@ const styles = StyleSheet.create({
   },
   item_name: {
     width: width * 0.7,
-    height: height * 0.1, // 20% height screen
+    height: height * 0.1, // 10% height screen
     textAlign: "center",
     fontFamily: "Times New Roman",
     color: colors.white,
     fontSize: 25,
   },
   item_thumbnail: {
-    width: height * 0.25, // 25% height screen
-    height: height * 0.25, // circle
-    borderRadius: height * 0.15, //circle
-    marginTop: height * 0.03,
+    width: height * 0.23, // 25% height screen
+    height: height * 0.23, // circle
+    borderRadius: height * 0.23, //circle
+    marginTop: height * 0.05,
   },
   item_description: {
     width: width * 0.9,
@@ -280,6 +280,7 @@ const styles = StyleSheet.create({
     marginTop: height * 0.02,
     fontSize: 16,
     fontFamily: "Times New Roman",
+    opacity: 0.7,
   },
   sumaryContainer: {
     width: width,

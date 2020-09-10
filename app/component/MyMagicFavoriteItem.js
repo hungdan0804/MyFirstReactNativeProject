@@ -17,13 +17,12 @@ import {
 } from "react-native-gesture-handler";
 const { width, height } = Dimensions.get("screen");
 
-function MyMagicFavoriteItem({ item, index, navigation }) {
+function MyMagicFavoriteItem({ item, index, onItemClick }) {
   const animateItem = useRef(new Animated.Value(0)).current;
   const inputRange = [0, 1, 2];
 
-  const handleItemClick = useCallback(() => {
-    console.log(item);
-    navigation.navigate("Item", { item: item, index: index });
+  const handleItemClick = useCallback((item, index) => {
+    onItemClick(item, index);
   }, []);
 
   const translateX = animateItem.interpolate({
@@ -49,12 +48,12 @@ function MyMagicFavoriteItem({ item, index, navigation }) {
       Animated.delay(index * 500),
       Animated.timing(animateItem, {
         toValue: 1,
-        duration: 600,
+        duration: 500,
         useNativeDriver: true,
       }),
       Animated.timing(animateItem, {
         toValue: 2,
-        duration: 1000,
+        duration: 800,
         useNativeDriver: true,
       }),
     ]).start();
@@ -119,7 +118,7 @@ function MyMagicFavoriteItem({ item, index, navigation }) {
     return index % 2 == 0 ? <EvenView /> : <OddView />;
   }
   return (
-    <TouchableWithoutFeedback onPress={handleItemClick}>
+    <TouchableWithoutFeedback onPress={() => handleItemClick(item, index)}>
       <MyView />
     </TouchableWithoutFeedback>
   );

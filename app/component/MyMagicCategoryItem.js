@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import {
   StyleSheet,
   Dimensions,
@@ -8,12 +8,18 @@ import {
   Text,
 } from "react-native";
 import colors from "../config/color";
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
 const { width, height } = Dimensions.get("screen");
 
-function MyMagicCategoryItem({ item, index }) {
+function MyMagicCategoryItem({ item, index, onItemClick }) {
   const inputRange = [0, 1];
   const animateItem = useRef(new Animated.Value(0)).current;
+
+  const handleItemClick = useCallback((item, index) => {
+    onItemClick(item, index);
+  }, []);
+
   useEffect(() => {
     Animated.timing(animateItem, {
       toValue: 1,
@@ -23,10 +29,12 @@ function MyMagicCategoryItem({ item, index }) {
     }).start();
   });
   return (
-    <Animated.View style={{ ...styles.cardView, opacity: animateItem }}>
-      <Image style={styles.item_category_thumnail} source={item.thumbnail} />
-      <Text style={styles.item_category_name}>{item.title}</Text>
-    </Animated.View>
+    <TouchableWithoutFeedback onPress={() => handleItemClick(item, index)}>
+      <Animated.View style={{ ...styles.cardView, opacity: animateItem }}>
+        <Image style={styles.item_category_thumnail} source={item.thumbnail} />
+        <Text style={styles.item_category_name}>{item.title}</Text>
+      </Animated.View>
+    </TouchableWithoutFeedback>
   );
 }
 
